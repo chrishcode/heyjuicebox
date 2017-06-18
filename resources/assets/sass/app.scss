@@ -1,0 +1,106 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Barrio');
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Bootstrap custom changes
+.panel {
+	background-color: $brand-primary;
+	border: $border;
+	border-radius: 0px;
+	font-weight: 700;
+	font-style: italic;
+}
+
+.panel-default > .panel-heading {
+	color: $text-color;
+	font-size: 20px;
+}
+
+.btn-primary {
+	border: $border;
+	border-radius: 0px;
+	background-color: $brand-primary;
+	font-weight: 700;
+	font-style: normal;
+	&:hover {
+		border-color: $brand-accent;
+		background-color: $brand-primary;
+
+	}
+}
+
+.btn-link {
+	color: $brand-accent;
+	&:hover {
+		color: $brand-accent;
+	}
+}
+
+.form-control {
+    background-color: $brand-primary;
+    border: $border;
+    border-radius: 0px;
+    box-shadow: none;
+    color: $text-color;
+    font-family: $font-family-body;
+    font-weight: 400;
+    font-style: normal;
+    &:focus {
+    	box-shadow: none;
+    }
+}
+
+.navbar-default .navbar-brand {
+	color: $text-color;
+	font-family: $font-family-logo;
+	font-size: 28px;
+	&:hover {
+		color: $text-color;
+	}
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: $text-color;
+	font-weight: 700;
+    font-style: normal;
+    text-transform: uppercase;
+	&:hover {
+		color: $text-color;
+	}
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	color: $text-color;
+	background-color: $brand-primary;
+}
+
+.dropdown-menu {
+	background-color: $brand-primary;
+	border: $border;
+	border-radius: 0px;
+	box-shadow: none;
+}
+
+.dropdown-menu > li > a {
+	color: $text-color;
+	text-transform: uppercase;
+	font-weight: 700;
+	&:hover {
+		color: $text-color;
+		background-color: $brand-primary;
+	}
+}
+
+// Normal styles
+body {
+	background-color: $brand-primary;
+}
