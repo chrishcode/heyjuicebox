@@ -22,7 +22,7 @@
     </div>
 
     <div class="body-section">
-        <h3>DISCOVER NEW JUICE EVERY MONTH <h5>(BUY IF YOU WANT TO, NO RECURRING BILLING)</h5></h3><br>
+        <h3>DISCOVER NEW JUICE EVERY MONTH</h3><br>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor lorem id sem condimentum, eu finibus sapien bibendum. Etiam euismod rhoncus nisl, et viverra lectus commodo sit amet.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor lorem id sem condimentum, eu finibus sapien bibendum. Etiam euismod rhoncus nisl, et viverra lectus commodo sit amet.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor lorem id sem condimentum, eu finibus sapien bibendum. Etiam euismod rhoncus nisl, et viverra lectus commodo sit amet.</p>

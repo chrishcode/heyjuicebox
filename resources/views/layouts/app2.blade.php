@@ -40,6 +40,9 @@
         <div class="body-content">
             @yield('content')
         </div>
+        <div class="footer">
+            <h6>© HEYJUICEBOX.COM - <a href="mailto:heyjuicebox@gmail.com">CONTACT</a></h6>
+        </div>
     </div>
 
     <!-- Scripts -->

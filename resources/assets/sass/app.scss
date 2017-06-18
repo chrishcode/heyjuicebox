@@ -108,6 +108,7 @@
 // Normal styles
 body {
 	background-color: $brand-primary;
+	-webkit-font-smoothing: subpixel-antialiased;
 }
 
 #app {
@@ -150,7 +151,7 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 	height: 600px;
 	margin-top: 380px;
-	animation: levitate 1.2s alternate ease-in-out infinite
+	animation: levitate 1.2s alternate ease-in-out infinite;
 }
 
 .hero-overlay {
@@ -275,6 +276,7 @@ h1, h2, h3, h4, h5, h6 {
 	.subsciption-box-images {
 		background-color: $brand-accent;
 		overflow: hidden;
+		/*height: 298px;*/
 
 		ul {
 			list-style: none;
@@ -295,6 +297,75 @@ h1, h2, h3, h4, h5, h6 {
 				background-position: center;
 			}
 		}	
+	}
+}
+
+.footer {
+	width: 100%;
+	height: 50px;
+	/*background-color: black;*/
+	align-self: flex-end;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	a {
+		color: $brand-accent;
+	}
+}
+
+// Responsive styles
+
+// Smartphones
+@media screen and (max-width: 414px) {
+	h4 {
+		line-height: 1.6;
+	}
+	.hero {
+		margin-bottom: 150px;
+	}
+	.hero-background {
+		margin-top: 320px;
+		background-size: initial;
+	}
+	.hero-content .hero-content-bottom .logo-slogan {
+		margin-top: -150px;
+		h1 {
+			line-height: 1.6;
+		}
+	}
+	.hero-content .hero-content-bottom .logo-slogan .logo {
+		width: 230px;
+	    height: 65px;
+	    font-size: 34px;
+	    margin-bottom: 0px;
+	}
+	.logo-slogan {
+		h1 {
+			font-size: 18px;
+		}
+		h4 {
+			font-size: 14px;
+		}
+	}
+    .body-section {
+	    width: 100%;
+	    margin-bottom: 150px;
+	}
+	.subsciption-box .subsciption-box-info {
+		padding: 20px;
+	}
+	.subsciption-box .subsciption-box-images ul li {
+		width: 120px;
+		height: 120px;
+	}
+}
+
+// Tablets
+
+@media screen and (max-width: 1024px) {
+	.body-section {
+	    width: 100%;
 	}
 }
 
