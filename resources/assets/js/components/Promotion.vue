@@ -1,12 +1,12 @@
 <template>
     <div class="promotion-box">
-        <select v-if="edit == true" class="form-control select-dropdown" v-model="promotion.dates">
+        <select :disabled="promotion.dates.startDate <= weeks[0].startDate ? true : false" v-if="edit == true" class="form-control select-dropdown" v-model="promotion.dates">
             <option v-for="week in weeks" :value="week">
                 <h3>WEEK {{ moment(week.startDate, "w") }} - {{ moment(week.startDate, "Y") }}<h5> ({{ moment(week.startDate, "MMMM Do") }} - {{ moment(week.endDate, "MMMM Do") }})</h5></h3>
             </option>
         </select>
-        <select v-else disabled class="form-control select-dropdown">
-            <option v-for="week in weeks">
+        <select v-else disabled class="form-control select-dropdown" v-model="promotion.dates">
+            <option v-for="week in weeks" :value="week">
                 <h3>WEEK {{ moment(week.startDate, "w") }} - {{ moment(week.startDate, "Y") }}<h5> ({{ moment(week.startDate, "MMMM Do") }} - {{ moment(week.endDate, "MMMM Do") }})</h5></h3>
             </option>
         </select>
@@ -29,6 +29,9 @@
             <button class="btn btn-primary" v-on:click="editPromotion" v-else>
                 EDIT
             </button>
+            <button class="btn btn-primary" v-if="deletePromotionParent" v-on:click="deletePromotion(index)">
+                DELETE
+            </button>
         </div>
     </div>
 </template>
@@ -37,6 +40,7 @@
     import moment from 'moment'
     // import autosize from 'autosize';
     export default {
+        props: ['promotion', 'deletePromotionParent', 'sortPromotionsParent', 'index'],
         mounted() {
             console.log()
             this.getDates()
@@ -45,18 +49,6 @@
             return {
                 edit: false,
                 weeks: [],
-                promotion: {
-                    dates: {
-                        startDate: null,
-                        endDate: null
-                    },
-                    link: 'https://www.materialui.co/colors',
-                    brand: {
-                        name: 'Finn cold press',
-                        description: 'At FINN COLD PRESS, we have created an honest range of organic, cold-pressed juices and smoothies, with a focus on taste and genuine health benefits. Our range comprises a rainbow of beautiful, organic products, flooding your body with pure liquid nutrition.',
-                        image: 'http://cdn2.bigcommerce.com/server5900/1ds7tb/product_images/logo.jpg'
-                    }
-                }
             }
         },
         methods: {
@@ -77,6 +69,13 @@
             editPromotion() {
                 // autosize(document.querySelectorAll('textarea'));
                 this.edit = !this.edit
+                this.sortPromotionsParent()
+            },
+            deletePromotion(promotion) {
+                let result = confirm("Delete this promotion?");
+                if (result) {
+                    this.deletePromotionParent(promotion)
+                }   
             }
         }
     }

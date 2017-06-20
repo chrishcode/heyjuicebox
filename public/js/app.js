@@ -845,6 +845,8 @@ window.Vue = __webpack_require__(40);
 
 Vue.component('example', __webpack_require__(36));
 Vue.component('promotion', __webpack_require__(37));
+Vue.component('scheduled-promotions', __webpack_require__(177));
+Vue.component('this-weeks-promotion', __webpack_require__(178));
 
 var app = new Vue({
   el: '#app'
@@ -1769,10 +1771,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 // import autosize from 'autosize';
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['promotion', 'deletePromotionParent', 'sortPromotionsParent', 'index'],
     mounted: function mounted() {
         console.log();
         this.getDates();
@@ -1780,19 +1786,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             edit: false,
-            weeks: [],
-            promotion: {
-                dates: {
-                    startDate: null,
-                    endDate: null
-                },
-                link: 'https://www.materialui.co/colors',
-                brand: {
-                    name: 'Finn cold press',
-                    description: 'At FINN COLD PRESS, we have created an honest range of organic, cold-pressed juices and smoothies, with a focus on taste and genuine health benefits. Our range comprises a rainbow of beautiful, organic products, flooding your body with pure liquid nutrition.',
-                    image: 'http://cdn2.bigcommerce.com/server5900/1ds7tb/product_images/logo.jpg'
-                }
-            }
+            weeks: []
         };
     },
 
@@ -1814,6 +1808,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         editPromotion: function editPromotion() {
             // autosize(document.querySelectorAll('textarea'));
             this.edit = !this.edit;
+            this.sortPromotionsParent();
+        },
+        deletePromotion: function deletePromotion(promotion) {
+            var result = confirm("Delete this promotion?");
+            if (result) {
+                this.deletePromotionParent(promotion);
+            }
         }
     }
 });
@@ -31884,6 +31885,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "promotion.dates"
     }],
     staticClass: "form-control select-dropdown",
+    attrs: {
+      "disabled": _vm.promotion.dates.startDate <= _vm.weeks[0].startDate ? true : false
+    },
     on: {
       "change": function($event) {
         var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
@@ -31902,12 +31906,33 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('h3', [_vm._v("WEEK " + _vm._s(_vm.moment(week.startDate, "w")) + " - " + _vm._s(_vm.moment(week.startDate, "Y"))), _c('h5', [_vm._v(" (" + _vm._s(_vm.moment(week.startDate, "MMMM Do")) + " - " + _vm._s(_vm.moment(week.endDate, "MMMM Do")) + ")")])])])
   })) : _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.promotion.dates),
+      expression: "promotion.dates"
+    }],
     staticClass: "form-control select-dropdown",
     attrs: {
       "disabled": ""
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.promotion.dates = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
     }
   }, _vm._l((_vm.weeks), function(week) {
-    return _c('option', [_c('h3', [_vm._v("WEEK " + _vm._s(_vm.moment(week.startDate, "w")) + " - " + _vm._s(_vm.moment(week.startDate, "Y"))), _c('h5', [_vm._v(" (" + _vm._s(_vm.moment(week.startDate, "MMMM Do")) + " - " + _vm._s(_vm.moment(week.endDate, "MMMM Do")) + ")")])])])
+    return _c('option', {
+      domProps: {
+        "value": week
+      }
+    }, [_c('h3', [_vm._v("WEEK " + _vm._s(_vm.moment(week.startDate, "w")) + " - " + _vm._s(_vm.moment(week.startDate, "Y"))), _c('h5', [_vm._v(" (" + _vm._s(_vm.moment(week.startDate, "MMMM Do")) + " - " + _vm._s(_vm.moment(week.endDate, "MMMM Do")) + ")")])])])
   })), _vm._v(" "), (_vm.edit == true) ? _c('div', {
     staticClass: "brand"
   }, [_c('div', {
@@ -32013,7 +32038,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.editPromotion
     }
-  }, [_vm._v("\n            EDIT\n        ")])])])
+  }, [_vm._v("\n            EDIT\n        ")]), _vm._v(" "), (_vm.deletePromotionParent) ? _c('button', {
+    staticClass: "btn btn-primary",
+    on: {
+      "click": function($event) {
+        _vm.deletePromotion(_vm.index)
+      }
+    }
+  }, [_vm._v("\n            DELETE\n        ")]) : _vm._e()])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -57596,6 +57628,221 @@ webpackContext.keys = function webpackContextKeys() {
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
 webpackContext.id = 167;
+
+/***/ }),
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {},
+    data: function data() {
+        return {
+            promotions: []
+        };
+    },
+
+    methods: {
+        addPromotion: function addPromotion() {
+            this.promotions.push({
+                dates: {
+                    startDate: __WEBPACK_IMPORTED_MODULE_0_moment___default()().add(this.promotions.length + 1, 'weeks').startOf('isoWeek').format('Y-MM-DD hh:mm:ss'),
+                    endDate: __WEBPACK_IMPORTED_MODULE_0_moment___default()().add(this.promotions.length + 1, 'weeks').endOf('isoWeek').format('Y-MM-DD hh:mm:ss')
+                },
+                link: 'http://sv.lipsum.com/feed/html',
+                brand: {
+                    name: 'Lorem ipsum',
+                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at rhoncus nulla. Praesent placerat nibh sed neque aliquam, non feugiat enim condimentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at rhoncus nulla. Praesent placerat nibh sed neque aliquam, non feugiat enim condimentum.',
+                    image: 'http://sv.lipsum.com/feed/html'
+                }
+            });
+        },
+        deletePromotion: function deletePromotion(promotion) {
+            this.promotions.splice(promotion, 1);
+        },
+        sortPromotions: function sortPromotions() {
+            this.promotions.sort(function (a, b) {
+                return new Date(a.dates.startDate) - new Date(b.dates.startDate);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 176 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {},
+    data: function data() {
+        return {
+            promotion: {
+                dates: {
+                    startDate: '2017-06-19 12:00:00',
+                    endDate: '2017-06-25 11:59:59'
+                },
+                link: 'https://www.materialui.co/colors',
+                brand: {
+                    name: 'Finn cold press',
+                    description: 'At FINN COLD PRESS, we have created an honest range of organic, cold-pressed juices and smoothies, with a focus on taste and genuine health benefits. Our range comprises a rainbow of beautiful, organic products, flooding your body with pure liquid nutrition.',
+                    image: 'http://cdn2.bigcommerce.com/server5900/1ds7tb/product_images/logo.jpg'
+                }
+            }
+        };
+    },
+
+    methods: {}
+});
+
+/***/ }),
+/* 177 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(7)(
+  /* script */
+  __webpack_require__(175),
+  /* template */
+  __webpack_require__(179),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/christopherwohlfarth/Desktop/codestuff/heyjuicebox/resources/assets/js/components/ScheduledPromotions.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] ScheduledPromotions.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1cad7f5e", Component.options)
+  } else {
+    hotAPI.reload("data-v-1cad7f5e", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 178 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(7)(
+  /* script */
+  __webpack_require__(176),
+  /* template */
+  __webpack_require__(180),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/christopherwohlfarth/Desktop/codestuff/heyjuicebox/resources/assets/js/components/ThisWeeksPromotion.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] ThisWeeksPromotion.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6ddcf6de", Component.options)
+  } else {
+    hotAPI.reload("data-v-6ddcf6de", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 179 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_vm._l((_vm.promotions), function(promotion, index) {
+    return _c('promotion', {
+      key: promotion.link,
+      attrs: {
+        "promotion": promotion,
+        "index": index,
+        "deletePromotionParent": _vm.deletePromotion,
+        "sortPromotionsParent": _vm.sortPromotions
+      }
+    })
+  }), _vm._v(" "), _c('div', {
+    staticClass: "signup-form"
+  }, [_c('button', {
+    staticClass: "btn btn-primary",
+    on: {
+      "click": _vm.addPromotion
+    }
+  }, [_vm._v("\n            SCHEDULE A NEW PROMOTION\n        ")])])], 2)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1cad7f5e", module.exports)
+  }
+}
+
+/***/ }),
+/* 180 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('promotion', {
+    key: _vm.promotion.link,
+    attrs: {
+      "promotion": _vm.promotion
+    }
+  })
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6ddcf6de", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

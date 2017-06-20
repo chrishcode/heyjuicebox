@@ -17,6 +17,8 @@ window.Vue = require('vue');
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('promotion', require('./components/Promotion.vue'));
+Vue.component('scheduled-promotions', require('./components/ScheduledPromotions.vue'));
+Vue.component('this-weeks-promotion', require('./components/ThisWeeksPromotion.vue'));
 
 
 const app = new Vue({
