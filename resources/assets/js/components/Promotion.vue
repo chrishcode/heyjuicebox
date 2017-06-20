@@ -1,7 +1,7 @@
 <template>
     <div class="promotion-box">
-        <select v-if="edit == true" class="form-control select-dropdown">
-            <option v-for="week in weeks">
+        <select v-if="edit == true" class="form-control select-dropdown" v-model="promotion.dates">
+            <option v-for="week in weeks" :value="week">
                 <h3>WEEK {{ moment(week.startDate, "w") }} - {{ moment(week.startDate, "Y") }}<h5> ({{ moment(week.startDate, "MMMM Do") }} - {{ moment(week.endDate, "MMMM Do") }})</h5></h3>
             </option>
         </select>
@@ -12,21 +12,15 @@
         </select>
         <div class="brand" v-if="edit == true">
             <div class="brand-image" :style="{'background-image': `url(${promotion.brand.image})`}"></div>
-            <label class="custom-file-upload">
-                <input type="file">
-            </label>
-            <h4><input type="text" name="" :value="promotion.brand.name"></h4>
-            <p><textarea>{{ promotion.brand.description }}</textarea></p><br>
-            <h4><input type="text" name="" :value="promotion.link"></h4>
+            <h4><h5>BRAND IMAGE URL</h5><input v-model="promotion.brand.image" type="text" name="" :value="promotion.brand.image"></h4><br>
+            <h4><h5>BRAND NAME</h5><input v-model="promotion.brand.name" type="text" name="" :value="promotion.brand.name"></h4><br>
+            <h5>BRAND DESCRIPTION</h5><p><textarea v-model="promotion.brand.description">{{ promotion.brand.description }}</textarea></p><br>
+            <h4><h5>PROMOTION URL</h5><input v-model="promotion.link" type="text" name="" :value="promotion.link"></h4>
         </div>
         <div class="brand" v-else>
-            <div class="brand-image" :style="{'background-image': `url(${promotion.brand.image})`, 'margin-bottom': 19 + 'px'}"></div>
-            <label :style="{'display': 'none'}" class="custom-file-upload">
-                <input type="file">
-            </label>
+            <div class="brand-image" :style="{'background-image': `url(${promotion.brand.image})`}"></div>
             <h4>{{ promotion.brand.name }}</h4>
-            <p>{{ promotion.brand.description }}</p><br>
-            <h4>{{ promotion.link }}</h4>
+            <p>{{ promotion.brand.description }}</p>
         </div>
         <div class="signup-form">
             <button class="btn btn-primary" v-on:click="editPromotion" v-if="edit == true">
@@ -52,8 +46,10 @@
                 edit: false,
                 weeks: [],
                 promotion: {
-                    startDate: '2017-06-19 00:00:00',
-                    endDate: '2017-06-25 00:00:00',
+                    dates: {
+                        startDate: null,
+                        endDate: null
+                    },
                     link: 'https://www.materialui.co/colors',
                     brand: {
                         name: 'Finn cold press',

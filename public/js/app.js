@@ -1769,12 +1769,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 // import autosize from 'autosize';
@@ -1788,8 +1782,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             edit: false,
             weeks: [],
             promotion: {
-                startDate: '2017-06-19 00:00:00',
-                endDate: '2017-06-25 00:00:00',
+                dates: {
+                    startDate: null,
+                    endDate: null
+                },
                 link: 'https://www.materialui.co/colors',
                 brand: {
                     name: 'Finn cold press',
@@ -31881,9 +31877,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "promotion-box"
   }, [(_vm.edit == true) ? _c('select', {
-    staticClass: "form-control select-dropdown"
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.promotion.dates),
+      expression: "promotion.dates"
+    }],
+    staticClass: "form-control select-dropdown",
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.promotion.dates = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
   }, _vm._l((_vm.weeks), function(week) {
-    return _c('option', [_c('h3', [_vm._v("WEEK " + _vm._s(_vm.moment(week.startDate, "w")) + " - " + _vm._s(_vm.moment(week.startDate, "Y"))), _c('h5', [_vm._v(" (" + _vm._s(_vm.moment(week.startDate, "MMMM Do")) + " - " + _vm._s(_vm.moment(week.endDate, "MMMM Do")) + ")")])])])
+    return _c('option', {
+      domProps: {
+        "value": week
+      }
+    }, [_c('h3', [_vm._v("WEEK " + _vm._s(_vm.moment(week.startDate, "w")) + " - " + _vm._s(_vm.moment(week.startDate, "Y"))), _c('h5', [_vm._v(" (" + _vm._s(_vm.moment(week.startDate, "MMMM Do")) + " - " + _vm._s(_vm.moment(week.endDate, "MMMM Do")) + ")")])])])
   })) : _c('select', {
     staticClass: "form-control select-dropdown",
     attrs: {
@@ -31898,40 +31915,93 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     style: ({
       'background-image': ("url(" + (_vm.promotion.brand.image) + ")")
     })
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('h4', [_c('input', {
+  }), _vm._v(" "), _c('h4', [_c('h5', [_vm._v("BRAND IMAGE URL")]), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.promotion.brand.image),
+      expression: "promotion.brand.image"
+    }],
     attrs: {
       "type": "text",
       "name": ""
     },
     domProps: {
-      "value": _vm.promotion.brand.name
+      "value": _vm.promotion.brand.image,
+      "value": (_vm.promotion.brand.image)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.promotion.brand.image = $event.target.value
+      }
     }
-  })]), _vm._v(" "), _c('p', [_c('textarea', [_vm._v(_vm._s(_vm.promotion.brand.description))])]), _c('br'), _vm._v(" "), _c('h4', [_c('input', {
+  })]), _c('br'), _vm._v(" "), _c('h4', [_c('h5', [_vm._v("BRAND NAME")]), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.promotion.brand.name),
+      expression: "promotion.brand.name"
+    }],
     attrs: {
       "type": "text",
       "name": ""
     },
     domProps: {
-      "value": _vm.promotion.link
+      "value": _vm.promotion.brand.name,
+      "value": (_vm.promotion.brand.name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.promotion.brand.name = $event.target.value
+      }
+    }
+  })]), _c('br'), _vm._v(" "), _c('h5', [_vm._v("BRAND DESCRIPTION")]), _c('p', [_c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.promotion.brand.description),
+      expression: "promotion.brand.description"
+    }],
+    domProps: {
+      "value": (_vm.promotion.brand.description)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.promotion.brand.description = $event.target.value
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.promotion.brand.description))])]), _c('br'), _vm._v(" "), _c('h4', [_c('h5', [_vm._v("PROMOTION URL")]), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.promotion.link),
+      expression: "promotion.link"
+    }],
+    attrs: {
+      "type": "text",
+      "name": ""
+    },
+    domProps: {
+      "value": _vm.promotion.link,
+      "value": (_vm.promotion.link)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.promotion.link = $event.target.value
+      }
     }
   })])]) : _c('div', {
     staticClass: "brand"
   }, [_c('div', {
     staticClass: "brand-image",
     style: ({
-      'background-image': ("url(" + (_vm.promotion.brand.image) + ")"),
-      'margin-bottom': 19 + 'px'
+      'background-image': ("url(" + (_vm.promotion.brand.image) + ")")
     })
-  }), _vm._v(" "), _c('label', {
-    staticClass: "custom-file-upload",
-    style: ({
-      'display': 'none'
-    })
-  }, [_c('input', {
-    attrs: {
-      "type": "file"
-    }
-  })]), _vm._v(" "), _c('h4', [_vm._v(_vm._s(_vm.promotion.brand.name))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.promotion.brand.description))]), _c('br'), _vm._v(" "), _c('h4', [_vm._v(_vm._s(_vm.promotion.link))])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('h4', [_vm._v(_vm._s(_vm.promotion.brand.name))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.promotion.brand.description))])]), _vm._v(" "), _c('div', {
     staticClass: "signup-form"
   }, [(_vm.edit == true) ? _c('button', {
     staticClass: "btn btn-primary",
@@ -31944,15 +32014,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": _vm.editPromotion
     }
   }, [_vm._v("\n            EDIT\n        ")])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('label', {
-    staticClass: "custom-file-upload"
-  }, [_c('input', {
-    attrs: {
-      "type": "file"
-    }
-  })])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
