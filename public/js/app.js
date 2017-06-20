@@ -847,6 +847,7 @@ Vue.component('example', __webpack_require__(36));
 Vue.component('promotion', __webpack_require__(37));
 Vue.component('scheduled-promotions', __webpack_require__(177));
 Vue.component('this-weeks-promotion', __webpack_require__(178));
+Vue.component('last-weeks-promotion', __webpack_require__(182));
 
 var app = new Vue({
   el: '#app'
@@ -1796,7 +1797,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         getDates: function getDates() {
             var weeks = [];
-            for (var i = 0; i < 52; i++) {
+            for (var i = -52; i < 52; i++) {
                 var week = {
                     startDate: __WEBPACK_IMPORTED_MODULE_0_moment___default()().add(i, 'weeks').startOf('isoWeek').format('Y-MM-DD hh:mm:ss'),
                     endDate: __WEBPACK_IMPORTED_MODULE_0_moment___default()().add(i, 'weeks').endOf('isoWeek').format('Y-MM-DD hh:mm:ss')
@@ -57841,6 +57842,93 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-6ddcf6de", module.exports)
+  }
+}
+
+/***/ }),
+/* 181 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {},
+    data: function data() {
+        return {
+            promotion: {
+                dates: {
+                    startDate: '2017-06-12 12:00:00',
+                    endDate: '2017-06-18 11:59:59'
+                },
+                link: 'https://www.materialui.co/colors',
+                brand: {
+                    name: 'Finn cold press',
+                    description: 'At FINN COLD PRESS, we have created an honest range of organic, cold-pressed juices and smoothies, with a focus on taste and genuine health benefits. Our range comprises a rainbow of beautiful, organic products, flooding your body with pure liquid nutrition.',
+                    image: 'http://cdn2.bigcommerce.com/server5900/1ds7tb/product_images/logo.jpg'
+                }
+            }
+        };
+    },
+
+    methods: {}
+});
+
+/***/ }),
+/* 182 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(7)(
+  /* script */
+  __webpack_require__(181),
+  /* template */
+  __webpack_require__(183),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/christopherwohlfarth/Desktop/codestuff/heyjuicebox/resources/assets/js/components/LastWeeksPromotion.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] LastWeeksPromotion.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-16b1ba89", Component.options)
+  } else {
+    hotAPI.reload("data-v-16b1ba89", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 183 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('promotion', {
+    key: _vm.promotion.link,
+    attrs: {
+      "promotion": _vm.promotion
+    }
+  })
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-16b1ba89", module.exports)
   }
 }
 

@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <span style="font-family: 'Barrio', cursive; font-style: normal;">HEYCOLDPRESSED</span> - DASHBOARD
+                        {{-- <span style="font-family: 'Barrio', cursive; font-style: normal;">HEYCOLDPRESSED</span> -  --}}DASHBOARD
                     </a>
                 </div>
 

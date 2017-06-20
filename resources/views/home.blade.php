@@ -7,6 +7,11 @@
     </div>
 
     <div class="body-section">
+        <h3>LAST WEEK'S PROMOTION</h3>
+        <last-weeks-promotion></last-weeks-promotion>
+    </div>
+
+    <div class="body-section">
         <h3>SCHEDULED PROMOTIONS</h3>
         <scheduled-promotions></scheduled-promotions>
     </div>

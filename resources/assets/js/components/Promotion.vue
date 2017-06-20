@@ -57,7 +57,7 @@
             },
             getDates() {
                 let weeks = []
-                for (var i = 0; i < 52; i++) {
+                for (var i = -52; i < 52; i++) {
                     let week = {
                         startDate: moment().add(i, 'weeks').startOf('isoWeek').format('Y-MM-DD hh:mm:ss'),
                         endDate: moment().add(i, 'weeks').endOf('isoWeek').format('Y-MM-DD hh:mm:ss')
