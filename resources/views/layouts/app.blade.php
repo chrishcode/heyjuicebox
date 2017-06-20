@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        <span style="font-family: 'Barrio', cursive; font-style: normal;">HEYCOLDPRESSED</span> - DASHBOARD
                     </a>
                 </div>
 
@@ -70,8 +70,9 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
+        <div class="body-content">
+            @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->

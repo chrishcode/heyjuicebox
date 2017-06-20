@@ -21,17 +21,16 @@
             <div class="fade-overlay"></div>
             <div class="hero-content">
                 <div class="hero-content-top">
-                    <h5>5 DAYS LEFT TO GET JUNE'S BOX</h5>
+                    <h5></h5>
                 </div>
                 <div class="hero-content-bottom">
                     <div class="logo-slogan">
                         <div class="logo">
-                            <p>HEYJUICEBOX</p>
+                            <p>HEYCOLDPRESSED</p>
                         </div>
                         <h1>
-                            A SUBSCRIPTION BOX FOR JUICE,<br>
-                            WITHOUT COMMITMENT.<br>
-                            <h4>(NO RECURRING BILLING)</h4>
+                            COLD-PRESSED JUICE RECOMMENDATIONS,<br>
+                            EVERY WEEK.<br>
                         </h1>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-@extends('layouts.brands')
+@extends('layouts.customers')
 
 @section('content')
 {{--     <div class="body-section">
@@ -12,13 +12,8 @@
     </div> --}}
 
     <div class="body-section">
-        <h3>HOW IT WORKS</h3><br>
-        <h4>1. WE FEATURE YOUR COLD-PRESSED JUICE ON OUR INSTAGRAM FOR A WEEK</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor lorem id sem condimentum, eu finibus sapien bibendum. Etiam euismod rhoncus nisl, et viverra lectus commodo sit amet.</p><br><br>
-        <h4>2. WE HELP YOU TRACK THE ENGAGEMENT</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor lorem id sem condimentum, eu finibus sapien bibendum. Etiam euismod rhoncus nisl, et viverra lectus commodo sit amet.</p><br><br>
-        <h4>3. YOU DECIDE HOW MUCH YOU WANT TO PAY</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor lorem id sem condimentum, eu finibus sapien bibendum. Etiam euismod rhoncus nisl, et viverra lectus commodo sit amet.</p><br><br>
+        <h3>DISCOVER A NEW COLD-PRESSED JUICE BRAND EVERY WEEK</h3><br>
+        <p>Every week we help you discover new cold-pressed juice by featuring a juice brand on our Instagram. Follow us to get started!</p><br>
         <div class="signup-form">
             <button class="btn btn-primary">
                 GET STARTED!
@@ -27,7 +22,7 @@
     </div>
 
     <div class="body-section">
-        <h3>BRANDS WE HAVE PROMOTED</h3><br>
+        <h3>BRANDS WE HAVE RECOMMENDED</h3><br>
         <div class="subsciption-box">
 {{--        <div class="subsciption-box-info">
                 <h4>MAY'S BOX - JUICE FROM THE RAW</h4>
